@@ -13,7 +13,7 @@ let apiProducts = {};
    
     
     let usersInDb = {
-    title: 'Users in DataBase',
+    title: 'Surfers in DataBase',
     color: 'primary', 
     cuantity:'',
     icon: 'fa-clipboard-list'
@@ -22,7 +22,7 @@ let apiProducts = {};
 /* <!-- Total awards --> */
 
 let productsInDb = {
-    title:'Products in DataBase', 
+    title:'Games in DataBase', 
     color:'success', 
     cuantity: '',
     icon:'fa-award'
