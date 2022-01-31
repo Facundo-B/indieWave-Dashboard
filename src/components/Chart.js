@@ -1,58 +1,59 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import ChartRow from './ChartRow';
 
-let tableRowsData = [
-    {
-        Title: 'Billy Elliot ',
-        Length: '123',
-        Rating: '5',
-        Categories: ['Drama','Comedia'],
-        Awards: 2
-    },
-    {
-        Title: 'Alicia en el país de las maravillas',
-        Length: '142',
-        Rating: '4.8',
-        Categories: ['Drama','Acción','Comedia'],
-        Awards: 3
-    },
-    
-]
 
 
 function Chart (){
+    const [productList, setProductList] = useState([]);
+    const [page, setPage] = useState(0);
+
+    const indieWave = 'http://localhost:3000'
+
+    useEffect( () => {
+      (async () => {
+        let apiProducts = await fetch(`${indieWave}/api/products/?page=${page}`)
+        apiProducts = await apiProducts.json();
+        setProductList(apiProducts.data)
+      })()
+    }, [page])
+
+    const previousPage = () => {
+        if (page > 0) {
+            setPage(page - 1);
+        }
+    }
+    const nextPage = () => {
+        setPage(page + 1);
+    }
     return (
         /* <!-- DataTales Example --> */
         <div className="card shadow mb-4">
             <div className="card-body">
                 <div className="table-responsive">
                     <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
+                       {/* hacer iteracion x cantidad de prod */}
                         <thead>
                             <tr>
-                                <th>Título</th>
-                                <th>Duración</th>
-                                <th>Rating</th>
-                                <th>Género</th>
-                                <th>Premios</th>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Título</th>
-                                <th>Duración</th>
-                                <th>Rating</th>
-                                <th>Género</th>
-                                <th>Premios</th>
-                            </tr>
-                        </tfoot>
                         <tbody>
                             {
-                            tableRowsData.map( ( row , i) => {
+                            productList.map( ( row , i) => {
                                 return <ChartRow { ...row} key={i}/>
                             })
                             }
-
                         </tbody>
+                        <tfoot>
+                            <tr>
+                            <th>
+                                <button onClick={previousPage}>Anterior</button>
+                                <button onClick={nextPage}>Siguiente</button>
+                            </th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
