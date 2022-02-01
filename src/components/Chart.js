@@ -36,7 +36,6 @@ function Chart (){
             <div className="card-body">
                 <div className="table-responsive">
                     <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
-                       {/* hacer iteracion x cantidad de prod */}
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -54,19 +53,18 @@ function Chart (){
                         
                     </table>
                     <tfoot>
-                            <tr>
-                                <th> 
-                                    <button onClick={previousPage}>Anterior</button>
-                                </th>
-                                <th>
-                                    <button onClick={nextPage}>Siguiente</button>
-                                </th>
-                            </tr>
-                        </tfoot>
+                        <tr>
+                            <th> 
+                                <button className='background-thistle' onClick={previousPage}>Anterior</button>
+                            </th>
+                            <th>
+                                <button className='background-thistle'onClick={nextPage}>Siguiente</button>
+                            </th>
+                        </tr>
+                    </tfoot> 
                 </div>
             </div>
         </div>
-
     )
 }
 
