@@ -2,7 +2,6 @@ import React from 'react';
 
 
 function ChartRow(props){
-    console.log(props);
     return (
             
                 <tr>
