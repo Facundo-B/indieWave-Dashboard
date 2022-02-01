@@ -13,17 +13,16 @@ function LastMovieInDb(){
         apiUsersRes = await fetch(`http://localhost:3000/api/users?page=${lastPage}`)
         apiUsersRes = await apiUsersRes.json();
         apiUsersRes = await fetch(`http://localhost:3000/api/users/${apiUsersRes.users.at(-1).id}`)
-        apiUsersRes = await apiUsersRes.json();
-        console.log(apiUsersRes);
+        apiUsersRes = await apiUsersRes.json()
         setlastUser(apiUsersRes)
     })()
     }, []) 
 
     return(
         <div className="col-lg-6 mb-4">
-            <div className="card shadow mb-4">
+            <div className="card shadow mb-4 text-cadet">
                 <div className="card-header py-3">
-                    <h5 className="m-0 font-weight-bold text-gray-800">Last user in Database</h5>
+                    <h5 className="m-0 font-weight-bold">Last user in Database</h5>
                 </div>
                 <div className="card-body">
                     <div className="text-center">

@@ -14,27 +14,27 @@ let apiProducts = {};
 
 let usersInDb = {
     title: 'Surfers in DataBase',
-    color: 'primary',
+    color: 'steelpink',
     cuantity: '',
-    icon: 'fa-clipboard-list'
+    icon: 'fa-users'
 }
 
 /* <!-- Total awards --> */
 
 let productsInDb = {
     title: 'Games in DataBase',
-    color: 'success',
+    color: 'turquoise',
     cuantity: '',
-    icon: 'fa-award'
+    icon: 'fa-gamepad'
 }
 
 /* <!-- Actors quantity --> */
 
 let categoriesInDb = {
     title: 'Categories in DataBase',
-    color: 'warning',
+    color: 'aquamarine',
     cuantity: '',
-    icon: 'fa-user-check'
+    icon: 'fa-clipboard-list'
 }
 
 
