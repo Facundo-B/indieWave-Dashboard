@@ -9,10 +9,11 @@ function Chart (){
 
     const indieWave = 'http://localhost:3000'
 
-    useEffect( () => {
+    useEffect( function () {
       (async () => {
-        let apiProducts = await fetch(`${indieWave}/api/products/?page=${page}`)
+        let apiProducts = await fetch(`${indieWave}/api/products?page=${page}`)
         apiProducts = await apiProducts.json();
+        console.log(apiProducts);
         setProductList(apiProducts.data)
       })()
     }, [page])
@@ -25,6 +26,7 @@ function Chart (){
     const nextPage = () => {
         setPage(page + 1);
     }
+    console.log(productList)
     return (
         /* <!-- DataTales Example --> */
         <div className="card shadow mb-4">
@@ -49,8 +51,8 @@ function Chart (){
                         <tfoot>
                             <tr>
                             <th>
-                                <button onClick={previousPage}>Anterior</button>
                                 <button onClick={nextPage}>Siguiente</button>
+                                <button onClick={previousPage}>Anterior</button>
                             </th>
                             </tr>
                         </tfoot>
