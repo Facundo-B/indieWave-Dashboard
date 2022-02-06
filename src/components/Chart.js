@@ -6,6 +6,7 @@ import ChartRow from './ChartRow';
 function Chart() {
     const [productList, setProductList] = useState([]);
     const [page, setPage] = useState(0);
+    const [cantPage, setCantPage] = useState();
 
 
     const indieWave = 'http://localhost:3000'
@@ -14,17 +15,18 @@ function Chart() {
         (async () => {
             let apiProducts = await fetch(`${indieWave}/api/products?page=${page}`)
             apiProducts = await apiProducts.json();
+            setCantPage(apiProducts.count/apiProducts.data.length)
             setProductList(apiProducts.data)
         })()
     }, [page])
-
+    
     const previousPage = () => {
         if (page > 0) {
             setPage(page - 1);
         }
     }
     const nextPage = () => {
-        if (page >= 4) {
+        if (page >= cantPage - 1) {
             setPage(page);
         } else {
             setPage(page + 1);
